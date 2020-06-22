@@ -1,34 +1,51 @@
-<!-- Disqus -->
-{{ if .Site.DisqusShortname -}}
-<div class="disqus-comment">
-<div>
-<div class="comment-underline"></div>
-</div>
-<div class="btn btn-secondary disqus-button" id="load_disqus" onclick="load_disqus()">
-  {{ i18n "load_disqus" }}
-</div>
-<div id="disqus_thread"></div>
+<!-- gitment -->
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css" />
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-  var disqus_config = function () {
-    this.page.url = {{ .Permalink }};
-  };
-  function load_disqus() {
-    // Don't ever inject Disqus on localhost--it creates unwanted
-    // discussions from 'localhost:1313' on your Disqus account...
-    if (window.location.hostname === 'localhost') return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = '{{ .Site.DisqusShortname }}';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    dsq.setAttribute('data-timestamp', +new Date());
-    (document.head || document.body).appendChild(dsq);
-
-    $('#load_disqus').remove();
-  };
+  var gitment = new Gitment({
+    id: '页面 ID', // 可选。默认为 location.href
+    owner: 'fy975713384',
+    repo: 'https://github.com/fy975713384/blogs_hugo',
+    oauth: {
+      client_id: '35afb85e4c521d6dbeb8',
+      client_secret: '463c9ec266980fd7358a11479beda5284ecf9f71',
+    },
+  })
+  gitment.render('container')
 </script>
-<noscript>Please enable JavaScript to view the
-  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript>
-<!-- <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a> -->
+<!-- Disqus -->
+<!-- {{ if .Site.DisqusShortname -}}
+<div class="disqus-comment">
+  <div>
+    <div class="comment-underline"></div>
+  </div>
+  <div class="btn btn-secondary disqus-button" id="load_disqus" onclick="load_disqus()">
+    {{ i18n "load_disqus" }}
+  </div>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = {{ .Permalink }};
+    };
+    function load_disqus() {
+      // Don't ever inject Disqus on localhost--it creates unwanted
+      // discussions from 'localhost:1313' on your Disqus account...
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '{{ .Site.DisqusShortname }}';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      dsq.setAttribute('data-timestamp', +new Date());
+      (document.head || document.body).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript
+    >Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-{{ end }}
+{{ end }} -->
