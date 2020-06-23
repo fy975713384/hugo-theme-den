@@ -16,7 +16,6 @@
   {{ $length := len .Site.Params.keywords | add -1 -}}
   <meta name="keywords" content="{{ range $index, $element := .Site.Params.keywords }}{{ $element | safeHTML }}{{if ne $index $length }}, {{ end }}{{ end }}" />
 {{- end -}}
-
 {{- with .Site.Params.google_verification -}}
 <meta name="google-site-verification" content="{{.}}" />
 {{- end }}
